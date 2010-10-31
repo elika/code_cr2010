@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8">
+  
+  <script type="text/javascript" src="../js/prototype.js"></script>
+  <script type="text/javascript" src="../js/raphael-min.js"></script>
+  <script type="text/javascript" src="../js/g.raphael-min.js"></script>  
+  <script type="text/javascript" src="../js/g.pie-min.js"></script>    
+  <script type="text/javascript" src="../js/app.js"></script>  
+
+  <style>
+    div#data_holder {
+      width: 30%;
+    }
+    div#chart_holder {
+      width: 400px;
+    }
+  </style>  
+  
+</head>
+
+<body>
+  <div id="header">
+    <h1>Simple data visualization with JavaScript</h1>
+    <h2>Raphaël example: Pie chart</h2>
+  </div>
+  <div id="content">
+    <div id="data_holder">
+      <table cellpadding="0" cellspacing="0">
+        <thead>
+          <tr><th>Excited by field?</th><th>&nbsp;</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>No</th><td>2.5 %</td></tr>          
+          <tr><th>Yes - once in a while</th><td>25.6 %</td></tr>
+          <tr><th>Yes - frequently</th><td>41.9 %</td></tr>          
+          <tr><th>Yes - very frequently</th><td>29.5 %</td></tr>                    
+          <tr><th>Don't know</th><td>0.5 %</td></tr>                              
+        </tbody>
+      </table>
+      <div class="source">A LIST APART Survey 2009,<br /> http://aneventapart.com/alasurvey2009/</div>
+    </div>
+  
+
+    <div id="chart_holder"></div>
+    
+    <div style="clear: both"></div>
+  </div>
+  
+  <div id="footer">
+    Conferencia Rails, 2010
+  </div>
+
+  
+  <script type="text/javascript">
+  var dimensions = $('chart_holder').getDimensions();
+  var data =  getData('data_holder');
+  
+  /* Sizing and scales. */
+  var w = dimensions.width,
+      h = dimensions.height,
+      r = w / 2 - 120;
+
+  var paper = Raphael('chart_holder', w, h);
+  var pie = paper.g.piechart(100, 100, r, data.values, {legend: data.labels, legendpos: 'east'});   
+  
+  pie.hover(function () {
+                  this.sector.stop();
+                  this.sector.scale(1.1, 1.1, this.cx, this.cy);
+                  if (this.label) {
+                      this.label[0].stop();
+                      this.label[0].scale(1.5);
+                      this.label[1].attr({"font-weight": 800});
+                  }
+              }, function () {
+                  this.sector.animate({scale: [1, 1, this.cx, this.cy]}, 500, "bounce");
+                  if (this.label) {
+                      this.label[0].animate({scale: 1}, 500, "bounce");
+                      this.label[1].attr({"font-weight": 400});
+                  }
+              });
+  </script>
+    
+</body>
+
+</html>

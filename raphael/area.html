@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet " href="../css/style.css" type="text/css" charset="utf-8">  
+  
+  <script type="text/javascript" src="../js/prototype.js"></script>
+  <script type="text/javascript" src="../js/raphael-min.js"></script>
+  <script type="text/javascript" src="../js/g.raphael-min.js"></script>  
+  <script type="text/javascript" src="../js/g.line-min.js"></script>    
+  <script type="text/javascript" src="../js/app.js"></script>  
+
+</head>
+
+<body>
+  <div id="header">
+    <h1>Simple Data Visualization with JavaScript</h1>
+    <h2>Raphaël example: Area chart </h2>
+  </div>
+  
+  <div id="content">  
+    <div id="data_holder">  
+      <code>
+      var dataArray =  [[1, 156], [2, 120], [3, 101], [4, 92], [5, 74], [6, 50], [7, 50], [8, 54], [9, 39], [10, 22], [11, 40], [12, 36], [13, 58], [14, 61], [15, 86], [16, 68], [17, 65], [18, 64], [19, 55], [20, 51], [21, 67], [22, 54], [23, 68], [24, 74], [25, 73], [26, 37], [27, 40], [28, 56], [29, 74], [30, 40], [31, 36], [32, 35], [33, 23], [34, 17], [35, 18], [36, 32], [37, 36], [38, 44], [39, 37], [40, 45]];
+      </code>
+      <div class="refs">
+        <h2>References</h2>
+        <ul>
+          <li><a href="http://g.raphaeljs.com/linechart.html">gRaphaël line chart example</a></li>
+          <li><a href="http://weblog.bocoup.com/alternate-x-axis-intervals-in-g-raphael-js-linechart">
+            Alternate x axis Intervals In g.raphaël.js linechart()
+          </a></li>
+        </ul>        
+      </div>
+    </div>
+
+    <div id="chart_holder"></div>
+    
+    <div style="clear: both"></div>
+  </div>
+  
+  <div id="footer">
+    Conferencia Rails, 2010
+  </div>
+    
+  <script type="text/javascript">
+    var dimensions = $('chart_holder').getDimensions();
+    
+    var dataArray =  [[1, 156], [2, 120], [3, 101], [4, 92], [5, 74], [6, 50], [7, 50], [8, 54], [9, 39], [10, 22], [11, 40], [12, 36], [13, 58], [14, 61], [15, 86], [16, 68], [17, 65], [18, 64], [19, 55], [20, 51], [21, 67], [22, 54], [23, 68], [24, 74], [25, 73], [26, 37], [27, 40], [28, 56], [29, 74], [30, 40], [31, 36], [32, 35], [33, 23], [34, 17], [35, 18], [36, 32], [37, 36], [38, 44], [39, 37], [40, 45]];
+  
+    var x = [],
+        y = [];
+        
+    dataArray.map(function(i) {
+      x.push(i[0]);
+      y.push(i[1])
+    });
+  
+    /* Sizing and scales. */
+    var w = dimensions.width-50,
+        h = dimensions.height-50;
+
+    var paper = Raphael("chart_holder", w, h);
+    
+    var options = {
+      shade: true, // Fill the area
+      axis: "0 0 1 1", // Where to put the labels (trbl)
+      axisystep: 5,
+      axisxstep: 8
+    } 
+    paper.g.linechart(
+      20, // X start in pixels
+      20, // Y start in pixels
+      w, // Width of chart in pixels
+      h-30, // Height of chart in pixels
+      x, [y], options);
+      
+  </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet " href="../css/style.css" type="text/css" charset="utf-8">
+  
+  <script type="text/javascript" src="../js/prototype.js"></script>
+  <script type="text/javascript" src="../js/protovis-r3.2.js"></script>
+  <script type="text/javascript" src="../js/app.js"></script>  
+</head>
+
+<body>
+  <div id="header">
+    <h1>Simple Data Visualization with JavaScript</h1>
+    <h2>Protovis example</h2>
+  </div>
+  <div id="content">
+    <div id="data_holder">
+      <table cellpadding="0" cellspacing="0">
+        <thead>
+          <tr><th>Excited by field?</th><th>&nbsp;</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>No</th><td>2.5 %</td></tr>          
+          <tr><th>Yes - once in a while</th><td>25.6 %</td></tr>
+          <tr><th>Yes - frequently</th><td>41.9 %</td></tr>          
+          <tr><th>Yes - very frequently</th><td>29.5 %</td></tr>                    
+          <tr><th>Don't know</th><td>0.5 %</td></tr>                              
+        </tbody>
+      </table>
+      <div class="source">A LIST APART Survey 2009,<br /> http://aneventapart.com/alasurvey2009/</div>
+    </div>
+  
+
+    <div id="chart_holder"></div>
+    
+    <div style="clear: both"></div>
+  </div>
+  
+  <div id="footer">
+    Conferencia Rails, 2010
+  </div>
+  
+  
+  <script type="text/javascript+protovis">
+  var dimensions = $('chart_holder').getDimensions();
+  var data = getData('data_holder');
+  
+      /* Sizing and scales. */
+      var w = dimensions.width,
+          h = dimensions.height,
+          r = w / 2,
+          a = pv.Scale.linear(0, 100).range(0, 2 * Math.PI);
+
+      /* The root panel. */
+      var vis = new pv.Panel()
+          .canvas('chart_holder')
+          .width(w)
+          .height(h);
+
+      /* The wedge, with centered label. */
+      vis.add(pv.Wedge)
+             .def("o", -1)
+             .data(data.values.sort(pv.reverseOrder))
+             .outerRadius(r - 30 )
+             .angle(a)
+             .left(function() w / 2
+                 + Math.cos(this.startAngle() + this.angle() / 2)
+                 * ((this.o() == this.index) ? 10 : 0))
+             .bottom(function() w / 2
+                 - Math.sin(this.startAngle() + this.angle() / 2)
+                 * ((this.o() == this.index) ? 10 : 0))
+             .event("mouseover", function() this.o(this.index))
+             .event("mouseout", function() this.o(-1))
+          .anchor("center").add(pv.Label)
+              .visible(function(d) d > 2.5)
+              .textAngle(0)
+              .textStyle('white')
+              .text(function(d) d.toFixed(2));
+      vis.render();    
+  </script>
+    
+</body>
+
+</html>

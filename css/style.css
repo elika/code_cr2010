@@ -1,0 +1,120 @@
+html {
+  margin:0;
+  padding:0;
+}
+
+body {
+  background-color:#F0F0F0;
+  color:#000000;
+  font-family:verdana,sans-serif;
+  font-size:small;
+  margin:0;
+  padding:0;
+}
+
+div#content, div#header {
+  margin:0 auto;
+  width:904px;
+  background: white;
+  border: 3px solid #aaa;
+}
+
+div#header {
+  background: #990000;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+div#header h1, div#header h2 {
+  padding-left: 20px;
+}
+
+div#content {
+  border-top: none;
+  margin-top: 0;
+  padding: 10px 0 20px 0;
+}
+
+div#chart_holder, div#data_holder {
+  padding-left: 20px;
+}
+
+
+table {
+  border: solid 1px;
+  width: 100%;
+}
+
+table th, table td {
+  padding: 5px;
+  border: none;
+}
+
+table th {
+  background: #eee;
+  font-weight: normal;
+  text-align: right;
+}
+
+table thead th {
+  background: #aaa;
+  color: white;
+}
+
+table td {
+  text-align: right;
+}
+
+div.source {
+  padding: 1em 0px 0px 0px;
+  font-size: 80%;
+}
+
+#chart_holder {
+  position: relative;
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  float: left;
+}
+
+div#data_holder {
+  width: 40%;
+  float: left;
+  padding: 20px;
+}
+
+div#footer {
+  margin:0 auto;
+  width:904px;
+  text-align: right;
+}
+
+div#go2next {
+  clear: both;
+  text-align: right;
+  margin-right: 1em;
+}
+
+div#go2next a {
+  color: #aaa;
+  text-decoration: none;  
+}
+
+div#go2next a:hover {
+  color: #900;
+}
+
+div.refs h2 {
+  margin-top: 2em;
+  font-size: 120%;
+  font-weight: bold;
+}
+
+div.refs ul li {
+  padding-bottom: 1em;
+}
+
+div.refs ul li a {
+  color: #000;
+}

@@ -1,0 +1,16 @@
+Simple Data Visualization using Javascript
+
+A talk for the "Conferencia Rails, 2010" (Madrid)
+
+Creating useful and usable visual representation of a set of data is in general a difficult
+task involving knowledge of math, programming and some statistics and design.
+Nevertheless, on the web there are many situations where we only need a simple
+chart to represent our data. When this is the case we can use any of the plenty
+of JavaScript libraries available out there for rendering numerical data into
+interactive visualization. 
+
+This talk is about the use of two of these libraries, Raphaël (http://raphaeljs.com/) and
+ProtoVis (http://vis.stanford.edu/protovis/) to convert a table with numbers into interactive chart. Both libraries use a SVG object to represent the data but differ in
+the way this object is created. 
+
+Here you can find the talk examples's source code and the PDF file with the presentation.
