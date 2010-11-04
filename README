@@ -14,3 +14,10 @@ ProtoVis (http://vis.stanford.edu/protovis/) to convert a table with numbers int
 the way this object is created. 
 
 Here you can find the talk examples's source code and the PDF file with the presentation.
+
+References:
+
+* Protovis http://vis.stanford.edu/protovis/
+* Raphaël, http://raphaeljs.com/
+* gRaphaël, http://g.raphaeljs.com/
+* gRaphaël on github, http://github.com/DmitryBaranovskiy/g.raphael/
